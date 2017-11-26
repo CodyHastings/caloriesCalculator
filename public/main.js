@@ -1,8 +1,9 @@
 $(document).ready(function() {
 
-  $("#submit").click(getInputs);
+  $("#submit").click(main);
 
-  function getInputs(){
+
+  function main(){
     var inputCalories = $("#calories").val();
     var inputCarbs = $("#carbs").val();
     var inputProteins = $("#proteins").val();
@@ -27,6 +28,7 @@ $(document).ready(function() {
     console.log(carbsResult + " " + proteinsResult + " " + fatsResult);
 
   }
+
 
   function calculateInputs(total, value){
 
@@ -55,5 +57,57 @@ $(document).ready(function() {
     return "Deficit";
 
   }
+
+  var canvas = document.querySelector("canvas");
+  var c = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  window.addEventListener("resize", function() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+          
+    });
+
+ 
+  function Bar() {
+    
+
+    this.update = function() {
+
+      
+      
+      this.draw();
+    };
+
+
+
+    this.draw = function() {
+      
+     
+    }
+  }
+
+  var barArray = [];
+  function init() {
+    
+    barArray.push(new Bar()); 
+
+  }
+
+  function animate() {
+
+    requestAnimationFrame(animate);
+    c.clearRect(0, 0, innerWidth , innerHeight);
+
+    for (var i = 0; i < barArray.length; i++) {
+      barArray[i].update();
+
+    }
+  
+
+  }
+      
+  animate();
+
 
 });

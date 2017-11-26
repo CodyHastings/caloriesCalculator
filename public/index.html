@@ -2,18 +2,28 @@
 <html>
 <head>
 		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="/main.css">
 </head>
 <body>
-	Total Calories<input id="calories" type="text" class="inputBox">
-	Calories from Carbohydrates<input id="carbs" type="text" class="inputBox">
-	Calories from Proteins<input id="proteins" type="text" class="inputBox">
-	Calories from Fats<input id="fats" type="text" class="inputBox">
-	<button id="submit">Submit</button>
+	<label for="calories">Total Calories</label>
+	<input id="calories" type="text" class="inputBox input-group">
+	<label for="carbs">Calories from Carbohydrates</label>
+	<input id="carbs" type="text" class="inputBox input-group">
+	<label for="proteins">Calories from Proteins</label>
+	<input id="proteins" type="text" class="inputBox input-group">
+	<label for="fats">Calories from Fats</label>
+	<input id="fats" type="text" class="inputBox input-group">
+	<button id="submit" class="btn btn-info">Submit</button>
+	<div id="canvasContainer">
+		<canvas></canvas>
+	</div>
+
 	<script
 		src="https://code.jquery.com/jquery-3.2.1.js"
 		integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
 		crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="/main.js" type="text/javascript"></script>
 </body>
 </html>

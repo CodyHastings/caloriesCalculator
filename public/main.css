@@ -1,0 +1,23 @@
+label {
+	margin: auto;
+	display: block;
+	text-align: center;
+}
+.inputBox {
+	margin: auto;
+	display: block;
+	text-align: center;
+}
+
+#submit {
+	margin: auto;
+	display: block;
+	text-align: center;
+
+}
+
+#canvasContainer {
+	margin: auto;
+	height: 60vh;
+	width: 80%;
+}
