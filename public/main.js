@@ -20,6 +20,12 @@ $(document).ready(function() {
 
     console.log(targetCarbs + " " + targetProteins + " " + targetFats);
 
+    var carbsResult = compare(targetCarbs, inputCarbs);
+    var proteinsResult = compare(targetProteins, inputProteins);
+    var fatsResult = compare(targetFats, inputFats);
+
+    console.log(carbsResult + " " + proteinsResult + " " + fatsResult);
+
   }
 
   function calculateInputs(total, value){
@@ -31,6 +37,22 @@ $(document).ready(function() {
   function getTarget(total, targetPercent){
 
     return total * targetPercent;
+
+  }
+
+  function compare(expected, actual){
+
+    if(expected === actual){
+
+        return "Perfect";
+
+    } else if (expected < actual){
+
+        return "Surplus";
+
+    }
+
+    return "Deficit";
 
   }
 
