@@ -1,4 +1,17 @@
 $(document).ready(function() {
+  var targetBarCount = 0;
+  var barCount = 0;
+  var margin = 20;
+  var startX = 5;
+  var canvas = document.querySelector("canvas");
+  var c = canvas.getContext("2d");
+  canvas.width = $("#canvasContainer").innerWidth();
+  canvas.height = $("#canvasContainer").innerHeight();
+  window.addEventListener("resize", function() {
+      canvas.width = $("#canvasContainer").innerWidth();
+      canvas.height = $("#canvasContainer").innerHeight();
+          
+    });
 
   $("#submit").click(main);
 
@@ -25,7 +38,15 @@ $(document).ready(function() {
     var proteinsResult = compare(targetProteins, inputProteins);
     var fatsResult = compare(targetFats, inputFats);
 
+    init(carbsResult);
+    init(proteinsResult);
+    init(fatsResult);
+    init(targetCarbs);
+    init(targetProteins);
+    init(targetFats);
+
     console.log(carbsResult + " " + proteinsResult + " " + fatsResult);
+    console.log(barArray);
 
   }
 
@@ -46,34 +67,35 @@ $(document).ready(function() {
 
     if(expected === actual){
 
-        return "Perfect";
+        
+        return "perfect";
 
     } else if (expected < actual){
-
-        return "Surplus";
+        
+        return "surplus";
 
     }
-
-    return "Deficit";
+   
+    return "deficit";
 
   }
 
-  var canvas = document.querySelector("canvas");
-  var c = canvas.getContext("2d");
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  window.addEventListener("resize", function() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-          
-    });
 
  
-  function Bar() {
-    
+  function Bar(x, y, width, height, color) {
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+    this.color = color;
+
 
     this.update = function() {
-
+      
+      if (this.y != 0 && this.y <= canvas.height){
+        this.y -= 1;
+        this.height += 1;
+      }
       
       
       this.draw();
@@ -83,14 +105,72 @@ $(document).ready(function() {
 
     this.draw = function() {
       
+
+      c.fillStyle=this.color;
+      c.fillRect(this.x, this.y, this.width, this.height);
+
      
     }
   }
 
   var barArray = [];
-  function init() {
-    
-    barArray.push(new Bar()); 
+  function init(check) {
+      var color = "black";
+      var height = 0;
+      var width = canvas.width / 20;
+    // if check is a number init a target bar
+    if($.isNumeric(check)){
+      targetBarCount += 1
+      switch(targetBarCount){
+        case 1:
+          var x = (startX + width) * 4;
+          var y = canvas.height - 5;
+        break;
+        case 2:
+          var x = (startX + width) * 6;
+          var y = canvas.height - 5;
+        break;
+        case 3:
+          var x = (startX + width) * 8;
+          var y = canvas.height - 5;
+        break;
+      }
+ 
+
+    }
+    switch(check){
+      case "perfect":
+        var color = "green";
+      break;
+
+      case "surplus":
+        var color = "red";
+      break;
+
+      case "deficit":
+        var color = "blue";
+      break;
+
+    }
+    barCount += 1
+    var width = canvas.width / 20;
+    var height = 0;
+    switch(barCount){
+        case 1:
+          var x = (startX + width);
+          var y = canvas.height - 5;
+        break;
+        case 2:
+          var x = (startX + width) * 5;
+          var y = canvas.height - 5;
+        break;
+        case 3:
+          var x = (startX + width) * 7;
+          var y = canvas.height - 5;
+        break;
+      }
+      
+    barArray.push(new Bar(x, y, width, height, color)); 
 
   }
 
