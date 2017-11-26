@@ -13,11 +13,24 @@ $(document).ready(function() {
     var fatsPercent = calculateInputs(inputCalories, inputFats);
 
     console.log(carbPercent + " " + proteinPercent + " " + fatsPercent);
+
+    var targetCarbs = getTarget(inputCalories, .45);
+    var targetProteins = getTarget(inputCalories, .35);
+    var targetFats = getTarget(inputCalories, .2);
+
+    console.log(targetCarbs + " " + targetProteins + " " + targetFats);
+
   }
 
   function calculateInputs(total, value){
 
     return value / total;
+
+  }
+
+  function getTarget(total, targetPercent){
+
+    return total * targetPercent;
 
   }
 
