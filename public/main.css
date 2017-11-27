@@ -1,5 +1,6 @@
 label {
 	margin: auto;
+	padding-top: 15px;
 	display: block;
 	text-align: center;
 }
@@ -11,6 +12,7 @@ label {
 
 #submit {
 	margin: auto;
+	margin-top: 10px;
 	display: block;
 	text-align: center;
 
@@ -21,4 +23,21 @@ label {
 	height: 60vh;
 	width: 45vw;
 	z-index: 20;
+	overflow: scroll;
+}
+
+#info1 {
+	position: absolute;
+	border: 5px outset grey;
+	padding: 5px 5px 5px 5px;
+	margin: 5px 5px 5px 5px;
+}
+
+#info2 {
+	position: absolute;
+	left: 80vw;
+	border: 5px outset grey;
+	padding: 5px 5px 5px 5px;
+	margin: 5px 5px 5px 5px;
+	display: none;
 }

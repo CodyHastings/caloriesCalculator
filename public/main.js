@@ -18,8 +18,8 @@ $(document).ready(function() {
 
   function main(){
     animate();
+    $("#info2").show();
 
-    console.log(barArray);
     var inputCalories = $("#calories").val();
     var inputCarbs = $("#carbs").val();
     var inputProteins = $("#proteins").val();
@@ -29,13 +29,11 @@ $(document).ready(function() {
     var proteinPercent = calculateInputs(inputCalories, inputProteins);
     var fatsPercent = calculateInputs(inputCalories, inputFats);
 
-    console.log(carbPercent + " " + proteinPercent + " " + fatsPercent);
 
     var targetCarbs = getTarget(inputCalories, .45);
     var targetProteins = getTarget(inputCalories, .35);
     var targetFats = getTarget(inputCalories, .2);
 
-    console.log(targetCarbs + " " + targetProteins + " " + targetFats);
 
     var carbsResult = compare(targetCarbs, inputCarbs);
     var proteinsResult = compare(targetProteins, inputProteins);
@@ -58,8 +56,6 @@ $(document).ready(function() {
     init(targetProteins, targetProteins, tProteins);
     init(targetFats, targetFats, tFats);
 
-    console.log(carbsResult + " " + proteinsResult + " " + fatsResult);
-    console.log(barArray);
     
   }
 
@@ -134,35 +130,37 @@ $(document).ready(function() {
 
     this.draw = function() {
       
-
+      c.shadowBlur=20;
+      c.shadowColor="black";
       c.fillStyle=this.color;
       c.fillRect(this.x, this.y, this.width, this.height);
+      c.shadowBlur=0;
       c.font="12px Verdana";
       c.fillStyle="black";
       switch(this.name){
         case "targetCarbs":
           c.fillText("Target Carbs", this.x - 15, canvas.height - 5);
-          c.fillText(this.stats, this.x, this.y - 2);
+          c.fillText(this.stats + " cal.", this.x, this.y - 2);
         break;
         case "targetProteins":
           c.fillText("Target Proteins", this.x - 20, canvas.height - 5);
-          c.fillText(this.stats, this.x, this.y - 2);
+          c.fillText(this.stats + " cal.", this.x, this.y - 2);
         break;
         case "targetFats":
           c.fillText("Target Fats", this.x - 15, canvas.height - 5);
-          c.fillText(this.stats, this.x, this.y - 2);
+          c.fillText(this.stats + " cal.", this.x, this.y - 2);
         break;
         case "inputCarbs":
           c.fillText("Carbs", this.x - 1, canvas.height - 5);
-          c.fillText(this.stats, this.x, this.y - 2);
+          c.fillText(this.stats + " cal.", this.x, this.y - 2);
         break;
         case "inputProteins":
           c.fillText("Proteins", this.x -1, canvas.height - 5);
-          c.fillText(this.stats, this.x, this.y - 2);
+          c.fillText(this.stats + " cal.", this.x, this.y - 2);
         break;
         case "inputFats":
           c.fillText("Fats", this.x, canvas.height - 5);
-          c.fillText(this.counter, this.x, this.y - 2);
+          c.fillText(this.stats + " cal.", this.x, this.y - 2);
         break;
       }
 
@@ -171,7 +169,9 @@ $(document).ready(function() {
 
   function initLegend(){
       c.font="20px Verdana";
+      c.shadowBlur=20;
       c.strokeRect(0, 0, 120, 100);
+      c.shadowBlur=0;
       c.fillStyle="green";
       c.fillRect(5, 20, 20, 20);
       c.fillStyle="blue";
