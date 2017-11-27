@@ -19,6 +19,6 @@ label {
 #canvasContainer {
 	margin: auto;
 	height: 60vh;
-	width: 80%;
+	width: 45vw;
 	z-index: 20;
 }
